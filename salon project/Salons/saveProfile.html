@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Save Profile</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.1001fonts.com/aspergit-font.html">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://code.angularjs.org/1.7.8/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    </script>
+    <style>
+        #heading {
+            font-size: 35px;
+            color: #e19387;
+            /* font-family: Proxima Nova Alt; */
+            font-style: bold;
+            font-weight: bold;
+            /* margin-left: 15px; */
+            margin-top: 15px;
+            position: relative;
+            cursor: pointer;
+
+        }
+
+        #head {
+            height: 45px;
+            width: 100%;
+        }
+
+        #headD {
+            height: 60px;
+            width: 100%;
+            padding: 10px 0 10px 0;
+        }
+
+        #offhead {
+            font-size: 23px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: bold;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        #offheadD {
+            font-size: 23px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: bold;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+
+        #adds {
+            background-color: white;
+            border-width: 1px;
+            outline: none;
+            border-color: #e19387;
+            border-radius: 5px;
+            color: #e19387;
+            font-size: 18px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: bold;
+            font-weight: bold;
+            padding: 3px 35px 3px 35px;
+            float: right;
+        }
+
+        #adds a {
+            font-size: 18px;
+            color: #e19387;
+        }
+
+        #adds a:hover {
+            text-decoration: none;
+        }
+
+        #adds a:focus {
+            text-decoration: none;
+        }
+
+
+        #salonD {
+            padding: 5px 15px 5px 0;
+
+        }
+
+        #salonD a {
+            color: #e19387;
+            font-size: 23px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: bold;
+            font-weight: bold;
+            padding: 0;
+            margin: 0;
+        }
+
+        #salonD a:hover {
+            font-size: 23px;
+            color: #e19387;
+            text-decoration: none;
+        }
+
+        #salonD a:focus {
+            text-decoration: none;
+        }
+
+        #salonD p {
+            padding: 5px;
+            margin-left: 20px;
+
+            font-size: 23px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: regular;
+            font-weight: regular;
+        }
+
+        #changp {
+            background-color: white;
+            outline: transparent;
+            border: none;
+            padding: 0;
+        }
+
+        #frow label {
+            width: 300px;
+            margin: 10px 20px 0 0;
+
+        }
+
+        #frow span {
+            margin: 0 0 3px;
+            font-size: 20px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: normal;
+            font-weight: normal;
+            color: #212529;
+        }
+
+        input {
+            width: 230px;
+            height: 32px;
+            font-size: 18px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: normal;
+            font-weight: normal;
+            border-color: transparent;
+            border: 1px solid #e19387;
+            /* border-radius: 5px; */
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        input[type='submit'] {
+            background-color: #e19387;
+            color: white;
+            border: none;
+            outline: none;
+            height: 35px;
+            width: 120px;
+            font-size: 20px;
+            margin-bottom: 15px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: regular;
+            font-weight: regular;
+            position: relative;
+            border-radius: 5px;
+            float: right;
+            margin-right: 15px;
+
+        }
+
+        input[type='submit']:focus {
+            background-color: #fdf0ee;
+        }
+
+        #loader {
+            bottom: 0;
+            height: 100px;
+            left: 0;
+            margin: auto;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100px;
+        }
+
+        #loader .dot {
+            bottom: 0;
+            height: 100%;
+            left: 0;
+            margin: auto;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 50px;
+        }
+
+        #loader .dot::before {
+            border-radius: 75%;
+            content: "";
+            height: 50px;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transform: scale(0);
+            width: 50px;
+        }
+
+        #loader .dot:nth-child(7n+1) {
+            transform: rotate(45deg);
+        }
+
+        #loader .dot:nth-child(7n+1)::before {
+            animation: 0.8s linear 0.1s normal none infinite running load;
+            background: #00ff80 none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+2) {
+            transform: rotate(90deg);
+        }
+
+        #loader .dot:nth-child(7n+2)::before {
+            animation: 0.8s linear 0.2s normal none infinite running load;
+            background: #00ffea none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+3) {
+            transform: rotate(135deg);
+        }
+
+        #loader .dot:nth-child(7n+3)::before {
+            animation: 0.8s linear 0.3s normal none infinite running load;
+            background: #00aaff none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+4) {
+            transform: rotate(180deg);
+        }
+
+        #loader .dot:nth-child(7n+4)::before {
+            animation: 0.8s linear 0.4s normal none infinite running load;
+            background: #0040ff none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+5) {
+            transform: rotate(225deg);
+        }
+
+        #loader .dot:nth-child(7n+5)::before {
+            animation: 0.8s linear 0.5s normal none infinite running load;
+            background: #2a00ff none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+6) {
+            transform: rotate(270deg);
+        }
+
+        #loader .dot:nth-child(7n+6)::before {
+            animation: 0.8s linear 0.6s normal none infinite running load;
+            background: #9500ff none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+7) {
+            transform: rotate(315deg);
+        }
+
+        #loader .dot:nth-child(7n+7)::before {
+            animation: 0.8s linear 0.7s normal none infinite running load;
+            background: magenta none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+8) {
+            transform: rotate(360deg);
+        }
+
+        #loader .dot:nth-child(7n+8)::before {
+            animation: 0.8s linear 0.8s normal none infinite running load;
+            background: #ff0095 none repeat scroll 0 0;
+        }
+
+        #loader .loading {
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            bottom: -40px;
+            height: 20px;
+            left: 0;
+            position: absolute;
+            right: 0;
+            width: 180px;
+        }
+
+        @keyframes load {
+            100% {
+                opacity: 0;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes load {
+            100% {
+                opacity: 0;
+                transform: scale(1);
+            }
+        }
+
+        #hide input[type=file] {
+            display: none;
+            margin: 10px;
+
+        }
+
+        #hide input[type=file]+label {
+            display: inline-block;
+            margin: 20px;
+            padding: 4px 32px;
+            background-color: #FFFFFF;
+            border: solid 1px #666F77;
+            border-radius: 6px;
+            color: #666F77;
+        }
+
+        #hide input[type=file]:active+label {
+            background-image: none;
+            background-color: #2D6C7A;
+            color: #FFFFFF;
+        }
+
+        #lg {
+            width: 200px;
+            height: 30px;
+            font-size: 23px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: normal;
+            font-weight: normal;
+            border-color: transparent;
+            border: none;
+            background-color: #fdf0ee;
+            outline: none;
+            padding: 8px 13px 8px 13px;
+            margin-left: 15px;
+            margin-right: 15px;
+
+        }
+
+        #msg {
+            color: red;
+            font-size: 16px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: normal;
+            font-weight: normal;
+        }
+
+        #fmsg {
+            color: red;
+            font-size: 14px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: normal;
+            font-weight: normal;
+        }
+
+        #box {
+            border: 2px solid #fdf0ee;
+            border-radius: 5px;
+            margin: 0 45px 0 0;
+        }
+
+        #box p {
+            margin: 0;
+            font-size: 20px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: regular;
+            font-weight: regular;
+            padding: 8px;
+            margin-left: 10px;
+        }
+
+        #frm {
+            margin-left: 20px;
+        }
+
+        table {
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            table-layout: fixed;
+            width: 300px;
+        }
+
+        tbody {
+            font-size: 20px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: regular;
+            font-weight: regular;
+            height: 100%;
+
+        }
+
+        tbody tr {
+            padding: 5px 0 5px 0;
+            margin-top: 5px;
+        }
+
+        td {
+
+            width: 120px;
+            text-align: left;
+
+        }
+
+        td {
+            padding-bottom: 5px;
+            padding-top: 5px;
+            padding-left: 5px;
+
+
+        }
+
+        img {
+            border-radius: 5px;
+        }
+
+        .hoverable {
+            position: relative;
+            display: block;
+            cursor: pointer;
+            height: 110px;
+            width: 110px;
+
+            border-radius: 5px;
+        }
+
+        .hoverable .hover-text {
+            position: absolute;
+            display: none;
+            top: 0;
+            left: 0;
+            transform: translate(0, 0);
+            z-index: 2;
+        }
+
+        .hoverable .background {
+            position: absolute;
+            display: none;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            pointer-events: none;
+            border-radius: 5px;
+            z-index: 1;
+        }
+
+        .hoverable:hover .hover-text {
+            display: block;
+        }
+
+        .hoverable:hover .background {
+            display: block;
+        }
+
+        #fileInput {
+            display: none;
+        }
+        #addSalon {
+            float: right;
+            background-color: white;
+            margin-right: 15px;
+            border-width: 1px;
+            outline: none;
+            border-color: #e19387;
+            border-radius: 5px;
+            color: #e19387;
+            font-size: 18px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: bold;
+            font-weight: bold;
+            padding: 2px 15px 2px 15px;
+            /* margin-left: 25px; */
+            margin-top: 23px;
+
+
+        }
+
+        #addSalon a {
+            font-size: 18px;
+            color: #e19387;
+
+        }
+
+        #addSalon a:hover {
+            text-decoration: none;
+        }
+
+        #addSalon a:focus {
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        var app = angular.module("DemoApp", []);
+        app.controller("HomeController", function ($scope, $http, $window) {
+            $scope.IsVisible = false;
+            $scope.changePassword = function () {
+                $scope.IsVisible = true;
+                document.getElementById("p").style.color = "white";
+            }
+
+            $scope.IsDisplay = false;
+            $scope.vendDeatils = function () {
+                document.getElementById("frm").style.opacity = 0.5;
+                $scope.IsDisplay = true;
+            }
+
+            var queryString = location.search;
+            var urlParams = new URLSearchParams(location.search);
+
+            $scope.string = urlParams.get('EmailId');
+            $scope.VID = urlParams.get('VendorID');
+            urlParams.toString();
+            $scope.Newstring = urlParams.toString().replace("=", "");
+
+            $scope.homepage = function () {
+                location.href = "userDetailsScreen.html?VendorID=" + $scope.VID + "&EmailId=" + $scope.string;
+            }
+
+            $scope.responseDetails = [];
+            $http(
+                {
+                    method: "GET",
+                    url: " https://a1xlltmdgi.execute-api.ap-southeast-2.amazonaws.com/dev/vendors?VendorID=" + $scope.VID
+                }
+            ).then(function (response) {
+                $scope.responseDetails = response.data;
+                $scope.pass = $scope.responseDetails.Vendors.Password;
+                $scope.aster = $scope.pass.replace(/./g, "*");
+            }
+            )
+
+
+            $scope.Oldpass = document.getElementById("oldpass").value;
+            $scope.Pass = document.getElementById("pas").value;
+
+            $scope.lblMsg = null;
+            $scope.putdata = function () {
+                $scope.Name = document.getElementById("name").value;
+                var data = {
+                    "Name": $scope.Name,
+                    "OldPassword": $scope.Oldpass,
+                    "Password": $scope.Pass
+                }
+
+                var config = 'contenttype';
+
+                $http.put(" https://a1xlltmdgi.execute-api.ap-southeast-2.amazonaws.com/dev/adminusers/" + $scope.string, data, config).then(function (response) {
+                    // $scope.error1 = response.data.Status;
+                    // $scope.msg = response.Message;
+                    // $scope.aoo = response;
+                    $scope.next = response.data.Status;
+                    if ($scope.next == 1) {
+                        $window.location.href = "userDetailsScreen.html?" + "VendorID=" + $scope.VID + "&" + "EmailId=" + $scope.string;
+                    }
+                    else {
+
+                        document.getElementById("msg").innerText = "Incorrect old Password";
+                    }
+                    // if ($scope.error1 == 1) {
+                    //     document.getElementById("msg").innerText = "Password updated successfully...";
+                    // }
+                    // else {
+                    //     document.getElementById("msg").innerText = "Incorrect OldPassword...";
+                    // }
+
+                }, function (response) {
+
+
+
+                });
+
+            };
+            $scope.putprofile = function () {
+
+                var data = {
+                    "ProfilePic": $scope.newImg
+                }
+
+                var config = 'contenttype';
+
+                $http.put("https://a1xlltmdgi.execute-api.ap-southeast-2.amazonaws.com/dev/adminusers/" + $scope.string, data, config).then(function (response) {
+                    // $scope.error1 = response.data.Status;
+                    // $scope.msg = response.Message;
+                    // $scope.aoo = response;
+                    $scope.next = response.data.Status;
+                    if ($scope.next == 1) {
+                        $window.location.href = "userDetailsScreen.html?" + "VendorID=" + $scope.VID + "&" + "EmailId=" + $scope.string;
+                    }
+                    // if ($scope.error1 == 1) {
+                    //     document.getElementById("msg").innerText = "Password updated successfully...";
+                    // }
+                    // else {
+                    //     document.getElementById("msg").innerText = "Incorrect OldPassword...";
+                    // }
+
+                }, function (response) {
+
+
+
+                });
+
+            };
+            $scope.showPassword = false;
+
+            $scope.toggleShowPassword = function () {
+                $scope.showPassword = !$scope.showPassword;
+            }
+            $scope.showPassword2 = false;
+            $scope.toggleShowPassword2 = function () {
+                $scope.showPassword2 = !$scope.showPassword2;
+            }
+
+            $scope.newFile = function (input) {
+
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.readAsDataURL(input.files[0]);
+                    reader.onload = function (e) {
+
+                        $('#photo-id').attr('src', e.target.result);
+                        var canvas = document.createElement("canvas");
+                        var imageElement = document.createElement("img");
+
+                        imageElement.setAttribute = $('<img>', { src: e.target.result });
+                        var context = canvas.getContext("2d");
+                        imageElement.setAttribute.load(function () {
+
+                            canvas.width = this.width;
+                            canvas.height = this.height;
+
+
+                            context.drawImage(this, 0, 0);
+                            var base64Image = canvas.toDataURL("image/png");
+
+                            let data1 = base64Image.replace(/^data:image\/\w+;base64,/, "");
+
+                            $scope.newImg = data1;
+
+
+                        });
+
+                    }
+                }
+
+            }
+
+        })
+    </script>
+</head>
+
+<body ng-app="DemoApp" ng-controller="HomeController">
+    <div id="frm">
+        <div class="row" id="head">
+            <div class="col-xs-10">
+                <h2 id="heading"><img src="Images/esradark.png" height="30" width="120" ng-click="homepage()"></h2>
+            </div>
+        </div>
+        <br>
+        <h2 id="offhead">Profile</h2>
+        <div id="salonD" class="col-xs-12">
+            <!-- <span>
+                <div id="hide">
+                    <label>
+                        <input type="file" name="file" onchange="angular.element(this).scope().newFile(this)"
+                            id="photo-upload" nv-file-select uploader="$ctrl.uploader" />
+                        <span class="photo_text hidden-xs" id="lg"><img ng-src="data:image/png;base64,{{newImg}}" ng-model="photo" id="photo-id"
+                            width="100" height="100"
+                            style="margin-left: 50px; margin-top: 10px; border-color: white;" />
+                        </span>
+                       
+                    </label>
+                   </div>
+               </span> -->
+            <div>
+                <label class="hoverable" for="fileInput">
+
+                    <img class="img-rounded" ng-show="responseDetails.Vendors.ProfilePic" id="photo-id"
+                        ng-src="{{responseDetails.Vendors.ProfilePic}}" height="130" width="130" />
+                    <img class="img-rounded" ng-show="!responseDetails.Vendors.ProfilePic" id="photo-id"
+                        src="Images/avatar2.png" height="130" width="130" />
+
+
+                    <!-- <img src="Images/avatar2.png" id="photo-id" height="130" width="130"> -->
+                    <div class="hover-text"><img src="Images/edit profile/Group 1172.png" height="130" width="130">
+                    </div>
+                    <div class="background"></div>
+                </label>
+                <br />
+                <input id="fileInput" type='file' onchange="angular.element(this).scope().newFile(this)">
+
+                <!-- <img ng-src="Images/avatar2.png" class="img-rounded" height="130" width="130"> -->
+            </div>
+        </div>
+        <div class="row" id="headD">
+            <div class="col-xs-10">
+                <h3 id="offheadD">{{responseDetails.Vendors.ContactNo}}</h3>
+            </div>
+            <div class="col-xs-2">
+                <a href=""><input type="submit" value="Save" ng-click="putdata();putprofile();vendDeatils()"></a>
+            </div>
+        </div>
+        <div id="box">
+            <table>
+                <tbody>
+                    <tr>
+                        <td style="width: 110px;">Name</td>
+                        <td style="width:250px;text-align: left;">
+                            <!-- <p>{{responseDetails.Vendors.VendorName}}</p> -->
+                            <input type="text" id="name" ng-model="Name" ng-value="responseDetails.Vendors.Name"
+                                style="width: 210px;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Old Password</td>
+                        <td style="width: 200px;">
+                            <div class="input-group" style="width: 200px;">
+                                <input type="text" id="oldpass" ng-model="Oldpass"
+                                    ng-attr-type="{{ showPassword ? 'text':'password'}}"
+                                    style="width: 170px;border-color: #e19286; border-right: none;border-radius: 1px;">
+                                <span ng-click="toggleShowPassword()"
+                                    ng-class="{'fa fa-eye': showPassword,'fa fa-eye-slash': !showPassword}"
+                                    style=" color: black; cursor: pointer;background-color: white;border-color:#e19286 ; font-size: 15px; margin-left: 0;"
+                                    class="input-group-addon"></span>
+                            </div>
+                            <span id="msg"></span>
+                        </td>
+
+                        <!-- <td> <input type="password" id="oldpass" ng-model="Oldpass"></td> -->
+                    </tr>
+                    <tr>
+                        <td>New Password</td>
+                        <td style="width: 200px;">
+                            <div class="input-group" style="width: 200px;">
+                                <input type="text" id="pas" ng-model="Pass"
+                                    ng-attr-type="{{ showPassword2 ? 'text':'password'}}"
+                                    style="width: 170px;border-color: #e19286; border-right: none;border-radius: 1px;">
+                                <span ng-click="toggleShowPassword2()"
+                                    ng-class="{'fa fa-eye': showPassword2,'fa fa-eye-slash': !showPassword2}"
+                                    style=" color: black; cursor: pointer;background-color: white;border-color:#e19286 ; font-size: 15px; margin-left: 0;"
+                                    class="input-group-addon"></span>
+                            </div>
+                            <!-- <input type="password" id="pas" ng-model="Pass" style="width: 170px;"> -->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- <div id="msg"></div> -->
+
+        <!-- <div style="margin-left: 15px;" ng-show="IsVisible">
+            <div id="frow">
+                <label>
+                    <span>Enter Old Password:</span>
+                    <input type="password" id="oldpass" ng-model="Oldpass">
+                </label>
+            </div>
+            <div id="frow">
+                <label>
+                    <span>Enter New Password:</span>
+                    <input type="password" id="pas" ng-model="Pass">
+                </label>
+            </div>
+            <input id="log" type="submit" value="Submit" ng-click="putdata()">
+            <div id="msg"></div>
+        </div> -->
+    </div>
+    <div class="container" ng-show="IsDisplay">
+        <div class="row">
+            <div id="loader">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="loading"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

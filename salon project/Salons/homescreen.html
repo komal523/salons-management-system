@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Homescreen</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://code.angularjs.org/1.7.8/angular.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://www.1001fonts.com/aspergit-font.html">
+    <script src="https://code.angularjs.org/1.7.8/angular-cookies.js"></script>
+    <script src="https://code.angularjs.org/1.7.8/angular-cookies.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+    </script>
+    <style>
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        #left {
+            background-color: #fdf0ee;
+            height: 100%;
+            /* height: 700px; */
+            /* overflow-y: scroll; */
+
+        }
+
+        /* 
+        #left::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        #left {
+            -ms-overflow-style: none;
+        } */
+
+        #right {
+            /* height: 700px; */
+            height: 100%;
+            width: 100%;
+            /* overflow-y: scroll; */
+        }
+
+        /* #right::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        #right {
+            -ms-overflow-style: none;
+        } */
+
+        .example {
+            height: 750px;
+            margin-top: -12px;
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
+
+        .example::-webkit-scrollbar {
+            display: none;
+        }
+
+        #border {
+            height: 750px;
+            /* margin-top: -12px; */
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
+
+        #border::-webkit-scrollbar {
+            display: none;
+        }
+
+        /*         
+        .example::-webkit-scrollbar {
+            display: none;
+        }
+
+      
+        .example {
+            -ms-overflow-style: none;
+        } */
+
+        #heading {
+            font-size: 38px;
+            color: #e19387;
+            /* font-family: Proxima Nova Alt; */
+            font-style: bold;
+            font-weight: bold;
+            margin-left: 5px;
+            margin-top: 13px;
+            /* margin-right: 680px; */
+            position: relative;
+            /* margin-right: 20px; */
+        }
+
+        #top {
+            margin-left: 30px;
+            margin-top: 10px;
+        }
+
+        #adds {
+            background-color: white;
+            margin-right: 15px;
+            border-width: 1px;
+            outline: none;
+            border-color: #e19387;
+            border-radius: 5px;
+            color: #e19387;
+            font-size: 18px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: bold;
+            font-weight: bold;
+            padding: 2px 15px 2px 15px;
+            /* margin-left: 70px; */
+            margin-top: 10px;
+
+
+        }
+
+        #adds a {
+            font-size: 18px;
+            color: #e19387;
+
+        }
+
+        #adds a:hover {
+            text-decoration: none;
+        }
+
+        #adds a:focus {
+            text-decoration: none;
+        }
+
+        #offadds {
+            float: right;
+            background-color: white;
+            border-width: 1px;
+            outline: none;
+            border-color: #e19387;
+            border-radius: 5px;
+            color: #e19387;
+            font-size: 18px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: bold;
+            font-weight: bold;
+            padding: 2px 15px 2px 15px;
+            margin-top: 10px;
+            margin-right: 3px;
+        }
+
+        #offadds a {
+            font-size: 18px;
+            color: #e19387;
+        }
+
+        #offadds a:hover {
+            text-decoration: none;
+        }
+
+        #offadds a:focus {
+            text-decoration: none;
+        }
+
+        #search {
+            margin-top: 10px;
+            text-align: center;
+            border-radius: 5px;
+            /* margin: 5px; */
+            position: relative;
+            box-shadow: none;
+            border-color: inherit;
+        }
+
+        #sear::placeholder {
+            font-size: 15px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: regular;
+            font-weight: regular;
+        }
+
+        #sear:focus {
+            outline: none;
+            border-color: #e19387;
+        }
+
+        .input-group {
+            border-color: white;
+            text-align: center;
+            /* width: 307px; */
+            margin-top: 15px;
+            margin-bottom: 15px;
+
+        }
+
+        #head {
+            height: 73px;
+            width: 103%;
+            /* width: 103%; */
+            top: 0;
+            position: sticky;
+            z-index: 1;
+
+
+        }
+
+
+        a {
+
+            color: #e19387;
+            /* font-family: Proxima Nova Alt; */
+            font-style: regular;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 5px 0 5px 0;
+
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: #e19387;
+        }
+
+        #prof {
+            margin: 5px 0 5px 5px 5px;
+            float: right;
+        }
+
+        #prof a {
+            color: #e19387;
+            font-size: 20px;
+
+        }
+
+        #prof a:hover {
+            text-decoration: none;
+            color: #e19387;
+        }
+
+        /* li {
+            list-style-type: none;
+        } */
+
+        /* #imgEffects {
+            transform: scale(1.0);
+            -webkit-transition: 2s;
+        }
+
+        #imgEffects:hover {
+            transform: scale(3.0);
+            -webkit-transition: 2s;
+        } */
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 50px);
+            grid-template-rows: repeat(2, 50px);
+            grid-gap: 2px;
+            justify-content: center;
+        }
+
+        .gallery__img {
+            width: 50%;
+            max-height: 50%;
+            object-fit: cover;
+
+        }
+
+        #loader {
+            bottom: 0;
+            height: 100px;
+            left: 0;
+            margin: auto;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100px;
+        }
+
+        #loader .dot {
+            bottom: 0;
+            height: 100%;
+            left: 0;
+            margin: auto;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 50px;
+        }
+
+        #loader .dot::before {
+            border-radius: 75%;
+            content: "";
+            height: 50px;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transform: scale(0);
+            width: 50px;
+        }
+
+        #loader .dot:nth-child(7n+1) {
+            transform: rotate(45deg);
+        }
+
+        #loader .dot:nth-child(7n+1)::before {
+            animation: 0.8s linear 0.1s normal none infinite running load;
+            background: #00ff80 none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+2) {
+            transform: rotate(90deg);
+        }
+
+        #loader .dot:nth-child(7n+2)::before {
+            animation: 0.8s linear 0.2s normal none infinite running load;
+            background: #00ffea none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+3) {
+            transform: rotate(135deg);
+        }
+
+        #loader .dot:nth-child(7n+3)::before {
+            animation: 0.8s linear 0.3s normal none infinite running load;
+            background: #00aaff none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+4) {
+            transform: rotate(180deg);
+        }
+
+        #loader .dot:nth-child(7n+4)::before {
+            animation: 0.8s linear 0.4s normal none infinite running load;
+            background: #0040ff none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+5) {
+            transform: rotate(225deg);
+        }
+
+        #loader .dot:nth-child(7n+5)::before {
+            animation: 0.8s linear 0.5s normal none infinite running load;
+            background: #2a00ff none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+6) {
+            transform: rotate(270deg);
+        }
+
+        #loader .dot:nth-child(7n+6)::before {
+            animation: 0.8s linear 0.6s normal none infinite running load;
+            background: #9500ff none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+7) {
+            transform: rotate(315deg);
+        }
+
+        #loader .dot:nth-child(7n+7)::before {
+            animation: 0.8s linear 0.7s normal none infinite running load;
+            background: magenta none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+8) {
+            transform: rotate(360deg);
+        }
+
+        #loader .dot:nth-child(7n+8)::before {
+            animation: 0.8s linear 0.8s normal none infinite running load;
+            background: #ff0095 none repeat scroll 0 0;
+        }
+
+        #loader .loading {
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            bottom: -40px;
+            height: 20px;
+            left: 0;
+            position: absolute;
+            right: 0;
+            width: 180px;
+        }
+
+        @keyframes load {
+            100% {
+                opacity: 0;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes load {
+            100% {
+                opacity: 0;
+                transform: scale(1);
+            }
+        }
+
+
+
+        .popup {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* The actual popup */
+        .popup .popuptext {
+            visibility: hidden;
+            width: 120px;
+            height: 70px;
+            background-color: #e19387;
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            top: 150%;
+            left: 50%;
+            margin-left: -60px;
+        }
+
+        /* Popup arrow */
+        .popup .popuptext::after {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent #e19387 transparent;
+        }
+
+        /* Toggle this class - hide and show the popup */
+        .popup .show {
+            visibility: visible;
+            -webkit-animation: fadeIn 1s;
+            animation: fadeIn 1s;
+        }
+
+        /* Add animation (fade in the popup) */
+        @-webkit-keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        #myPopup a {
+            color: white;
+            font-size: 15px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: regular;
+            font-weight: regular;
+            float: left;
+            margin-left: 5px;
+
+        }
+
+        #myPopup a:hover {
+            color: white;
+
+        }
+
+        #salD a:focus {
+            text-decoration: none;
+            color: #e19387;
+        }
+
+        #leftcol {
+            padding: 15px 15px 15px 5px;
+            margin-left: 5px;
+            margin-right: 20px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            size: 80px;
+        }
+
+        #leftcol a {
+            color: #e19387;
+            font-size: 18px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: regular;
+            font-weight: regular;
+            padding: 0;
+            margin: 0;
+        }
+
+        #leftcol a:hover {
+            font-size: 18px;
+            color: #e19387;
+            text-decoration: none;
+        }
+
+        #leftcol a:focus {
+            text-decoration: none;
+        }
+
+        #leftcol p {
+
+            margin: 0;
+            font-size: 16px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: regular;
+            font-weight: regular;
+        }
+
+
+        body {
+            margin: 0;
+        }
+
+        iframe {
+            display: block;
+            background: white;
+            border: none;
+            height: 250vh;
+            width: 100%;
+            margin: 0;
+            scrollbar-width: thin;
+            scrollbar-color: #fdf0ee #fdf0ee;
+            scrollbar-arrow-color: #fdf0ee;
+        }
+
+
+        iframe::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        iframe {
+            -ms-overflow-style: none;
+        }
+
+
+        #salonD {
+            padding: 0 15px 5px 5px;
+            margin: 0;
+        }
+
+        #salonD a {
+            color: #e19387;
+            font-size: 20px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: bold;
+            font-weight: bold;
+            padding: 0;
+            margin: 0;
+        }
+
+        #salonD a:hover {
+            font-size: 20px;
+            color: #e19387;
+            text-decoration: none;
+        }
+
+        #salonD a:focus {
+            text-decoration: none;
+        }
+
+        #salonD p {
+            padding: 2px;
+            margin: 0;
+            font-size: 18px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: regular;
+            font-weight: regular;
+        }
+
+        #salonD li {
+            padding: 3px;
+            margin: 0;
+            font-size: 18px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: regular;
+            font-weight: regular;
+            list-style-type: none;
+        }
+
+        #des {
+            margin-left: 5px;
+        }
+
+        #des p {
+            padding: 2px;
+            margin: 0;
+            font-size: 18px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: regular;
+            font-weight: regular;
+        }
+
+
+
+        table {
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 10px;
+            margin-bottom: 0;
+            table-layout: fixed;
+            width: 100%;
+            border: 1px solid #fdf0ee;
+            border-bottom: 1px solid #fdf0ee;
+        }
+
+        thead {
+
+            background-color: #fdf0ee;
+        }
+
+        thead th {
+            padding: 10px 8px 10px 8px;
+            font-size: 18px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: bold;
+            font-weight: bold;
+
+        }
+
+        tbody {
+            font-size: 16px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: regular;
+            font-weight: regular;
+            height: 100%;
+
+        }
+
+        tbody tr {
+            padding: 5px 0 5px 0;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+
+            /* width: 120px; */
+            overflow: hidden;
+            text-align: center;
+        }
+
+        td {
+            padding-bottom: 15px;
+            padding-top: 15px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        #offhead {
+            font-size: 23px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: bold;
+            font-weight: bold;
+            /* text-align: left; */
+            /* margin-right: 690px; */
+            /* margin-left: 15px; */
+            /* margin: 0 10px 0 10px; */
+            margin-left: 0;
+            margin-bottom: 10px;
+            padding: 0%;
+
+
+        }
+
+        #headD {
+            height: 50px;
+            width: 102%;
+            /* width: 104%; */
+            padding: 0 0 10px 0;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        #remEdit {
+            background-color: white;
+            color: #e19387;
+            border: none;
+            outline: none;
+            height: 30px;
+            width: 80px;
+            font-size: 20px;
+            margin-bottom: 10px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: bold;
+            font-weight: bold;
+            position: relative;
+            border-radius: 5px;
+
+        }
+
+        #remEdit:focus {
+            /* background-color: #fdf0ee; */
+            color: #fdf0ee;
+            outline: none;
+        }
+
+        hr {
+            height: 3px;
+            border: 2px solid #fdf0ee;
+            width: 100%;
+        }
+
+        #border {
+            border-top: 3px solid #fdf0ee;
+        }
+
+        .row:before,
+        .row:after {
+            display: none !important;
+        }
+
+        .row:before,
+        .row:after {
+            width: 0px;
+            height: 0px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 30px;
+            height: 14px;
+            margin-top: 10px;
+            margin-left: 20px;
+            /* margin-right: -15px; */
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 10px;
+            width: 10px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked+.slider {
+            background-color: #e19286;
+        }
+
+        input:focus+.slider {
+            box-shadow: 0 0 1px #e19286;
+        }
+
+        input:checked+.slider:before {
+            -webkit-transform: translateX(16px);
+            -ms-transform: translateX(16px);
+            transform: translateX(16px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+    </style>
+
+    <script>
+        var app = angular.module("DemoApp", ['ngCookies']);
+        app.controller("HomeController", function ($scope, $http, $cookies, $filter) {
+
+            $scope.EmailId = $cookies.getObject("EmailId");
+            if ($scope.EmailId != null) {
+                window.alert("Please login!");
+                window.location.href = "login.html";
+            }
+
+
+            var queryString = location.search;
+            var urlParams = new URLSearchParams(location.search);
+            $scope.string = urlParams.get('EmailId');
+            $scope.VID = urlParams.get('VendorID');
+            urlParams.toString();
+
+            $scope.lott = [];
+            $http(
+                {
+                    method: "GET",
+                    url: " https://a1xlltmdgi.execute-api.ap-southeast-2.amazonaws.com/dev/adminusers?EmailID=" + $scope.string
+                }
+            ).then(function (response) {
+                $scope.lott = response.data;
+            }
+            )
+
+            $scope.responseDetails = [];
+            $http(
+                {
+                    method: "GET",
+                    url: " https://a1xlltmdgi.execute-api.ap-southeast-2.amazonaws.com/dev/vendors"
+                }
+            ).then(function (response) {
+                $scope.responseDetails = response.data;
+            }
+            )
+            $scope.IsDisplay = false;
+            $scope.vendDeatils = function () {
+                document.getElementById("frm").style.opacity = 0.5;
+                $scope.IsDisplay = true;
+            }
+
+            $scope.myFunction = function () {
+                var popup = document.getElementById("myPopup");
+                popup.classList.toggle("show");
+            }
+
+            $scope.IsVisible = true;
+            $scope.IsUser = false;
+            $scope.Visible = function (ID) {
+                $scope.IsVisible = false;
+                $scope.IsUser = true;
+
+                $scope.user = [];
+                $http(
+                    {
+                        method: "GET",
+                        url: " https://a1xlltmdgi.execute-api.ap-southeast-2.amazonaws.com/dev/vendors?VendorID=" + ID
+                    }
+                ).then(function (response) {
+                    $scope.user = response.data;
+                    $scope.rResponse = [];
+                    $http(
+                        {
+                            method: "GET",
+                            url: "https://a1xlltmdgi.execute-api.ap-southeast-2.amazonaws.com/dev/offers?VendorID=" + ID
+                        }
+                    ).then(function (response) {
+                        $scope.rResponse = response.data;
+                        $scope.DeleteOffer = $scope.serverResponse.Offers;
+                    }
+                    )
+                }
+                )
+
+            }
+
+            //frame details
+            $scope.serverDetails = [];
+            $http(
+                {
+                    method: "GET",
+                    url: " https://a1xlltmdgi.execute-api.ap-southeast-2.amazonaws.com/dev/vendors"
+                    // ?VendorID=" + $scope.VID
+                }
+            ).then(function (response) {
+                $scope.serverDetails = response.data;
+                $scope.frameVendID = $scope.serverDetails.Vendors[0].VendorID;
+                $scope.DetailsVendID = $scope.frameVendID;
+                $scope.Details = [];
+                $http(
+                    {
+                        method: "GET",
+                        url: " https://a1xlltmdgi.execute-api.ap-southeast-2.amazonaws.com/dev/vendors?VendorID=" + $scope.VID
+                        // ?VendorID=" + $scope.VID
+                    }
+                ).then(function (response) {
+                    $scope.Details = response.data;
+                    $scope.serverResponse = [];
+                    $http(
+                        {
+                            method: "GET",
+                            url: "https://a1xlltmdgi.execute-api.ap-southeast-2.amazonaws.com/dev/offers?VendorID=" + $scope.VID
+                        }
+                    ).then(function (response) {
+                        $scope.serverResponse = response.data;
+                        $scope.DeleteOffer = $scope.serverResponse.Offers;
+                    }
+                    )
+                }
+                )
+            }
+            )
+
+
+            $scope.IsDisplay = false;
+
+            $scope.addOffer = function () {
+                document.getElementById("frm").style.opacity = 0.5;
+                $scope.IsDisplay = true;
+
+            }
+            $scope.myFunction = function () {
+                var popup = document.getElementById("myPopup");
+                popup.classList.toggle("show");
+            }
+
+
+
+            $scope.postdata = function (OfferID) {
+                if (confirm("Do you want to Delete This Offer?")) {
+                    var config = 'contenttype';
+
+                    $http.delete("https://a1xlltmdgi.execute-api.ap-southeast-2.amazonaws.com/dev/offers/" + OfferID).then(function (response) {
+                        location.reload();
+                    }, function (response) {
+
+                    });
+
+                    document.getElementById("frm").style.opacity = 0.5;
+                    $scope.IsDisplay = true;
+
+                }
+                else {
+                    location.reload();
+                }
+
+
+            }
+
+            $scope.formatDate = function (date) {
+                return new Date(date)
+            }
+            $scope.onCategory = function (ID) {
+                // $scope.Type = document.getElementById("type").value;
+
+                var data = {
+                    "Status": "1"
+
+                }
+                var config = 'contenttype';
+                $http.put("https://a1xlltmdgi.execute-api.ap-southeast-2.amazonaws.com/dev/vendors/" + ID, JSON.stringify(data), config)
+                    .then(function (response) {
+                        if (response.data)
+                            $scope.msg = "Post Data Submitted Successfully!";
+                        location.reload();
+                    },
+                        function (response) {
+                            $scope.msg = "Service not Exists";
+                            $scope.statusval = response.status;
+                            $scope.statustext = response.statusText;
+                            $scope.headers = response.headers();
+                        });
+            }
+            $scope.offCategory = function (ID) {
+                // $scope.Type = document.getElementById("type").value;
+
+                var data = {
+                    "Status": "0"
+
+                }
+                var config = 'contenttype';
+                $http.put("https://a1xlltmdgi.execute-api.ap-southeast-2.amazonaws.com/dev/vendors/" + ID, JSON.stringify(data), config)
+                    .then(function (response) {
+                        if (response.data)
+                            $scope.msg = "Post Data Submitted Successfully!";
+                        location.reload();
+                    },
+                        function (response) {
+                            $scope.msg = "Service not Exists";
+                            $scope.statusval = response.status;
+                            $scope.statustext = response.statusText;
+                            $scope.headers = response.headers();
+                        });
+            }
+
+        })
+    </script>
+</head>
+
+<body ng-app="DemoApp" ng-controller="HomeController">
+    <div id="frm">
+        <div id="right" class="col-sm-12">
+            <div class="row" id="head">
+                <div class="col-sm-7">
+                    <h2 id="heading"><img src="Images/esradark.png" height="30" width="120"></h2>
+                </div>
+                <div class="col-sm-5">
+                    <div id="top" style="float: right;">
+                        <button id="adds" ng-click=vendDeatils()><a href="addSalonsScreen.html?VendorID={{VID}}&EmailId={{string}}">
+                                Add
+                                Salon</a></button>
+                        <div class="btn-group" id="prof">
+                            <img class="img-circle" alt="user profile" width="35" height="35"
+                                style="margin-top: 10px;margin-left: 15px;" ng-show="lott.AdminUserDetails.ProfilePic"
+                                ng-src="{{lott.AdminUserDetails.ProfilePic}}" />
+                            <img class="img-circle" alt="user profile" width="35" height="35"
+                                style="margin-top: 10px;margin-left: 15px;" ng-show="!lott.AdminUserDetails.ProfilePic"
+                                src="Images/avatar2.png" />
+
+                            <div class="popup" ng-click="myFunction()"><a href=""><img src="Images/profile/arrow.png"
+                                        width="14" height="9" style="margin-top: 13px;">
+                                </a>
+                                <span class="popuptext" id="myPopup">
+                                    <li> <a ng-click=vendDeatils() href="editadminProfile.html?VendorID={{VID}}&EmailId={{string}}"><i
+                                                class="fa fa-user-o" style="margin-right: 10px;"></i>Profile</a></li>
+
+                                    <br>
+                                    <li><a ng-click=vendDeatils() href="login.html"><i class="fa fa-power-off"
+                                                style="margin-right: 10px;"></i>Logout</a></li>
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- <nav class="navbar navbar-light">
+                    <div>
+                        <h2 id="heading">Esra</h2>
+                    </div>
+                    <div>
+                        <button id="adds" ng-click=vendDeatils()><a href="addSalonsScreen.html?EmailId={{string}}">
+                                Add
+                                Salon</a></button>
+                    </div>
+                    <div class="btn-group" id="prof">
+                        <img src="Images/avatar2.png" class="img-circle" alt="user profile" width="35" height="35">
+                        &nbsp;
+                        <div class="popup" ng-click="myFunction()"><a href="">
+                                <i class="fa fa-angle-down"></i></a>
+                            <span class="popuptext" id="myPopup">
+                                <li> <a ng-click=vendDeatils() href="editadminProfile.html?EmailId={{string}}"><i
+                                            class="fa fa-user-o" style="margin-right: 10px;"></i>Profile</a></li>
+                                <br>
+                                <li><a ng-click=vendDeatils() href="login.html"><i class="fa fa-power-off"
+                                            style="margin-right: 10px;"></i>Logout</a></li>
+
+                            </span>
+                        </div>
+                    </div>
+                </nav> -->
+            </div>
+        </div>
+        <div id="left" class="col-sm-3">
+            <div id="search">
+                <div class="input-group" style="border-radius: 10px ;background-color: white;">
+                    <span style="border-radius: 5px; background-color: white;border-color: white; font-size: 15px;"
+                        class="input-group-addon">
+                        <i style="color:#e19286; margin-left:0; " class="glyphicon glyphicon-search"></i></span>
+                    <input id="sear" type="text" class="form-control" ng-model="search.$" placeholder="Search Salon"
+                        style="border-radius: 5px; border-left: none;box-shadow: none;
+                                        border-color: inherit;">
+                </div>
+            </div>
+            <div class="example">
+                <div ng-repeat="item in responseDetails.Vendors | filter:search"
+                    style="background-color: white; border-radius: 5px;">
+                    <div id="leftcol" class="row">
+                        <img ng-src="{{item.LogoURL}}" class="img-rounded" height="70" width="70">
+                        <span style="width: 160px;height: 100%; margin-left: 10px;">
+                            <!-- <a href="sdetailsScreen.html?VendorID={{item.VendorID}}" target="rightframe"
+                                        ng-click="Visible(item.VendorID)">{{item.VendorName}}</a> -->
+                            <a href="" target="rightframe" ng-click="Visible(item.VendorID)">{{item.VendorName}}</a>
+                            <p>{{item.Address}}</p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9" id=border>
+            <div style="width: 100%;margin-top: 7px;">
+                <div ng-show="IsVisible">
+                    <div class="col-sm-10">
+                        <div id="salonD" class="row">
+                            <span style="float: left;width: 130px; height:120px; margin-top: 5px;">
+                                <img ng-src="{{Details.Vendors.LogoURL}}" class="img-rounded" height="120" width="120">
+                            </span>
+                            <span style="width: 500px;">
+                                <a href="">{{Details.Vendors.VendorName}}</a>
+                                <p>4.0&nbsp;<i class="fa fa-star" style="color:orange"></i><i class="fa fa-star"
+                                        style="color:orange"></i><i class="fa fa-star" style="color:orange"></i><i
+                                        class="fa fa-star" style="color:orange"></i> (60)</p>
+                                <p><i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    {{Details.Vendors.Address}}</p>
+                                <p>
+                                    <li style="display: inline;" ng-repeat="atom in Details.Vendors.Categories">
+                                        {{atom}}{{$last ? '' : ', '}}</li>
+                                </p>
+                            </span>
+                        </div>
+                        <div id="des">
+                            <p>{{Details.Vendors.VendorDescription}}</p>
+                            <p><span style="margin-left: 125px;"><span ng-repeat="image in Details.Vendors.Images">
+                                        <img id="imgEffects" ng-src="{{image}}" width="60" height="60"
+                                            class="img-rounded" style="padding: 0 4px 4px 4px; border-radius: 10px;">
+                                    </span></span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <br>
+                        <div class="float-right">
+                            <label class="switch" ng-show="Details.Vendors.Status == 0"
+                                ng-click="onCategory(Details.Vendors.VendorID)">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+
+                            <label class="switch" ng-show="Details.Vendors.Status != 0"
+                                ng-click="offCategory(Details.Vendors.VendorID)">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="float-right"> <i class="btn btn-light fa fa-eye"
+                                style="font-size: 20px;cursor: pointer;color: #e19286;" data-toggle="modal"
+                                data-target="#myModal"></i></div>
+                        <div class="modal" id="myModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title"><b
+                                                style="color:#e19286; ">{{Details.Vendors.VendorName}} Login Details</b>
+                                        </h4>
+                                        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <label>EmailID</label>
+                                        <p>{{Details.Vendors.EmailID}}</p>
+                                        <label>Password</label>
+                                        <p>{{Details.Vendors.Password}}</p>
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div id="headD">
+                        <div class="col-sm-10">
+                            <h3 id="offhead">Offer Details</h3>
+                        </div>
+                        <div class="col-sm-2">
+                            <button id="offadds" ng-click=addOffer()><a
+                                    href="addOfferScreen.html?VendorID={{Details.Vendors.VendorID}}&EmailId={{string}}">
+                                    Add
+                                    Offer</a></button>
+                        </div>
+                    </div>
+
+                    <table width="100%">
+                        <thead>
+                            <th>Offer title</th>
+                            <th>Description</th>
+                            <th>From & To Date</th>
+                            <th>From & To Time</th>
+                            <th>Service Duration (mins)</th>
+                            <th>Actual price</th>
+                            <th>Offer<br>price</th>
+                            <th>Qty</th>
+                            <th>Edit & Remove</th>
+                        </thead>
+                        <tbody align="center">
+                            <tr ng-repeat="item in serverResponse.Offers" style="border-bottom: 2px solid #fdf0ee;">
+                                <td>{{item.OfferTitle}}</td>
+                                <td>{{item.Description}}</td>
+                                <td>{{formatDate(item.FromDateTime) | date:"MMM d, y"}}<br>To<br>{{formatDate(item.ToDateTime)  | date : "MMM d, y"}}
+                                </td>
+                                <!-- <td>{{item.FromDateTime | date:'dd MMM,yyyy' }}{{item.FromDateTime.splice(10,10) | date:'dd MMM,yyyy h:mm a' }}</td>
+                                            <td>{{item.ToDateTime  | date:'yyyy-MM-dd hh:mm a'}}</td> -->
+                                <td>{{item.FromTime}}<br>To<br>{{item.ToTime}}</td>
+                                <td>{{item.ServiceDuration}}</td>
+                                <td>{{item.ActualPrice | number:2}}&#36;</td>
+                                <td>{{item.OfferPrice | number:2}}&#36;</td>
+                                <td>{{item.Qty}}</td>
+                                <td>
+                                    <a id="remEdit"
+                                        href="editOfferScreen.html?VendorID={{Details.Vendors.VendorID}}&offerId={{item.OfferID}}&EmailId={{string}}"
+                                        ng-click="addOffer()" style="font-size: 20px;"><i class="fa fa-pencil"></i></a>
+                                    &nbsp;
+                                    <a id="remEdit" href="" ng-click="postdata(item.OfferID);addOffer()"
+                                        style="font-size: 20px;"><i class="fa fa-trash"></i></a>
+                                    <!-- <input id="btntest" type="submit" value="Delete" ng-click="postdata(item.OfferID);addOffer()"> -->
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+                <!-- <iframe id="framedisplay" seamless="seamless" scrolling="no" name="rightframe" width="100%"
+                                height="100%" frameborder="0">
+            
+                            </iframe> -->
+            </div>
+            <div style="width: 100%;">
+                <div ng-show="IsUser">
+                    <div class="col-sm-10">
+                        <div id="salonD" class="row">
+                            <span style="float: left;width: 130px; height:120px; margin-top: 5px;">
+                                <img ng-src="{{user.Vendors.LogoURL}}" class="img-rounded" height="120" width="120">
+                            </span>
+                            <span style="width: 500px;">
+                                <a href="">{{user.Vendors.VendorName}}</a>
+                                <p>4.0&nbsp;<i class="fa fa-star" style="color:orange"></i><i class="fa fa-star"
+                                        style="color:orange"></i><i class="fa fa-star" style="color:orange"></i><i
+                                        class="fa fa-star" style="color:orange"></i> (60)</p>
+                                <p><i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    {{user.Vendors.Address}}</p>
+                                <p>
+                                    <li style="display: inline;" ng-repeat="atom in user.Vendors.Categories">
+                                        {{atom}}{{$last ? '' : ', '}}</li>
+                                </p>
+                            </span>
+                        </div>
+                        <div id="des">
+                            <p>{{user.Vendors.VendorDescription}}</p>
+                            <p><span style="margin-left: 125px;"><span ng-repeat="image in user.Vendors.Images">
+                                        <img id="imgEffects" ng-src="{{image}}" width="60" height="60"
+                                            class="img-rounded" style="padding: 0 4px 4px 4px; border-radius: 10px;">
+                                    </span></span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <br>
+                        <div class="float-right">
+                            <label class="switch" ng-show="user.Vendors.Status == 0"
+                                ng-click="onCategory(user.Vendors.VendorID)">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+
+                            <label class="switch" ng-show="user.Vendors.Status != 0"
+                                ng-click="offCategory(user.Vendors.VendorID)">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="float-right"> <i class="btn btn-light fa fa-eye"
+                                style="font-size: 20px;cursor: pointer;color: #e19286;" data-toggle="modal"
+                                data-target="#myModallogin"></i></div>
+                        <div class="modal" id="myModallogin">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title"><b style="color:#e19286; ">{{user.Vendors.VendorName}}
+                                                Login Details</b>
+                                        </h4>
+                                        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <label>EmailID</label>
+                                        <p>{{user.Vendors.EmailID}}</p>
+                                        <label>Password</label>
+                                        <p>{{user.Vendors.Password}}</p>
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="headD">
+                        <div class="col-sm-10">
+                            <h3 id="offhead">Offer Details</h3>
+                        </div>
+                        <div class="col-sm-2">
+                            <button id="offadds" ng-click=addOffer()><a
+                                    href="addOfferScreen.html?VendorID={{user.Vendors.VendorID}}&EmailId={{string}}">
+                                    Add
+                                    Offer</a></button>
+                        </div>
+                    </div>
+
+                    <table width="100%">
+                        <thead>
+                            <th>Offer title</th>
+                            <th>Description</th>
+                            <th>From & To Date</th>
+                            <th>From & To Time</th>
+                            <th>Service Duration (mins) </th>
+                            <th>Actual price</th>
+                            <th>Offer<br>price</th>
+                            <th>Qty</th>
+                            <th>Edit & Remove</th>
+                        </thead>
+                        <tbody align="center">
+                            <tr ng-repeat="item in rResponse.Offers" style="border-bottom: 2px solid #fdf0ee;">
+                                <td>{{item.OfferTitle}}</td>
+                                <td>{{item.Description}}</td>
+                                <td>{{formatDate(item.FromDateTime) | date:"MMM d, y"}}<br>To<br>{{formatDate(item.ToDateTime)  | date : "MMM d, y"}}
+                                </td>
+                                <!-- <td>{{item.FromDateTime | date:'dd MMM,yyyy' }}{{item.FromDateTime.splice(10,10) | date:'dd MMM,yyyy h:mm a' }}</td>
+                                                <td>{{item.ToDateTime  | date:'yyyy-MM-dd hh:mm a'}}</td> -->
+                                <td>{{item.FromTime}}<br>To<br>{{item.ToTime}}</td>
+                                <td>{{item.ServiceDuration}}</td>
+                                <td>{{item.ActualPrice | number:2}}&#36;</td>
+                                <td>{{item.OfferPrice | number:2}}&#36;</td>
+                                <td>{{item.Qty}}</td>
+                                <td>
+                                    <a id="remEdit"
+                                        href="editOfferScreen.html?VendorID={{user.Vendors.VendorID}}&offerId={{item.OfferID}}&EmailId={{string}}"
+                                        ng-click="addOffer()" style="font-size: 20px;"><i class="fa fa-pencil"></i></a>
+                                    &nbsp;
+                                    <a id="remEdit" href="" ng-click="postdata(item.OfferID);addOffer()"
+                                        style="font-size: 20px;"><i class="fa fa-trash"></i></a>
+                                    <!-- <input id="btntest" type="submit" value="Delete" ng-click="postdata(item.OfferID);addOffer()"> -->
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+                <!-- <iframe id="framedisplay" seamless="seamless" scrolling="no" name="rightframe" width="100%"
+                                    height="100%" frameborder="0">
+                
+                                </iframe> -->
+            </div>
+        </div>
+    </div>
+    <div class="container" ng-show="IsDisplay">
+        <div class="row">
+            <div id="loader">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="loading"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

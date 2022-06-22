@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Salons Details</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.1001fonts.com/aspergit-font.html">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://code.angularjs.org/1.7.8/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+    </script>
+    <style>
+        body {
+            overflow-y: scroll;
+        }
+
+
+        #heading {
+            font-size: 35px;
+            color: #e19387;
+            /* font-family: Proxima Nova Alt; */
+            font-style: bold;
+            font-weight: bold;
+            margin-left: 20px;
+            margin-top: 15px;
+            margin-right: 1100px;
+            position: relative;
+        }
+
+
+        #adds {
+            float: right;
+            background-color: white;
+            margin-right: 8px;
+            margin-top: 15px;
+            border-width: 1px;
+            outline: none;
+            border-color: #e19387;
+            border-radius: 5px;
+            color: #e19387;
+            font-size: 18px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: bold;
+            font-weight: bold;
+            padding: 2px 15px 2px 15px;
+        }
+
+        #adds a {
+            font-size: 18px;
+            color: #e19387;
+        }
+
+        #adds a:hover {
+            text-decoration: none;
+        }
+
+        #adds a:focus {
+            text-decoration: none;
+        }
+
+        #head {
+            height: 70px;
+            width: 100%;
+        }
+
+        hr {
+            border: none;
+            height: 3px;
+            margin-right: auto;
+            margin-left: auto;
+            background-color: #fdf0ee;
+        }
+
+        #salonD {
+            padding: 0 15px 5px 5px;
+            margin: 0;
+        }
+
+        #salonD a {
+            color: #e19387;
+            font-size: 20px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: bold;
+            font-weight: bold;
+            padding: 0;
+            margin: 0;
+        }
+
+        #salonD a:hover {
+            font-size: 20px;
+            color: #e19387;
+            text-decoration: none;
+        }
+
+        #salonD a:focus {
+            text-decoration: none;
+        }
+
+        #salonD p {
+            padding: 2px;
+            margin: 0;
+            font-size: 18px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: regular;
+            font-weight: regular;
+        }
+
+        #salonD li {
+            padding: 3px;
+            margin: 0;
+            font-size: 18px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: regular;
+            font-weight: regular;
+            list-style-type: none;
+        }
+
+        #des {
+            margin-left: 5px;
+        }
+
+        #des p {
+            padding: 2px;
+            margin: 0;
+            font-size: 18px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: regular;
+            font-weight: regular;
+        }
+
+
+
+        table {
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 0;
+            margin-bottom: 0;
+            /* table-layout: fixed; */
+            width: 98%;
+            border: 1px solid #fdf0ee;
+            border-bottom: 1px solid #fdf0ee;
+
+        }
+
+        thead {
+
+            background-color: #fdf0ee;
+        }
+
+        thead th {
+            padding: 10px 5px 10px 5px;
+            font-size: 20px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: bold;
+            font-weight: bold;
+
+        }
+
+        tbody {
+            font-size: 18px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: regular;
+            font-weight: regular;
+            height: 100%;
+
+        }
+
+        tbody tr {
+            padding: 5px 0 5px 0;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+
+            width: 120px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        td {
+            padding-bottom: 15px;
+            padding-top: 15px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        #offhead {
+            font-size: 23px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: bold;
+            font-weight: bold;
+            text-align: left;
+            margin-right: 690px;
+            margin-left: 15px;
+            margin-bottom: 10px;
+
+
+        }
+
+        #loader {
+            bottom: 0;
+            height: 100px;
+            left: 0;
+            margin: auto;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100px;
+        }
+
+        #loader .dot {
+            bottom: 0;
+            height: 100%;
+            left: 0;
+            margin: auto;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 50px;
+        }
+
+        #loader .dot::before {
+            border-radius: 75%;
+            content: "";
+            height: 50px;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transform: scale(0);
+            width: 50px;
+        }
+
+        #loader .dot:nth-child(7n+1) {
+            transform: rotate(45deg);
+        }
+
+        #loader .dot:nth-child(7n+1)::before {
+            animation: 0.8s linear 0.1s normal none infinite running load;
+            background: #00ff80 none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+2) {
+            transform: rotate(90deg);
+        }
+
+        #loader .dot:nth-child(7n+2)::before {
+            animation: 0.8s linear 0.2s normal none infinite running load;
+            background: #00ffea none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+3) {
+            transform: rotate(135deg);
+        }
+
+        #loader .dot:nth-child(7n+3)::before {
+            animation: 0.8s linear 0.3s normal none infinite running load;
+            background: #00aaff none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+4) {
+            transform: rotate(180deg);
+        }
+
+        #loader .dot:nth-child(7n+4)::before {
+            animation: 0.8s linear 0.4s normal none infinite running load;
+            background: #0040ff none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+5) {
+            transform: rotate(225deg);
+        }
+
+        #loader .dot:nth-child(7n+5)::before {
+            animation: 0.8s linear 0.5s normal none infinite running load;
+            background: #2a00ff none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+6) {
+            transform: rotate(270deg);
+        }
+
+        #loader .dot:nth-child(7n+6)::before {
+            animation: 0.8s linear 0.6s normal none infinite running load;
+            background: #9500ff none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+7) {
+            transform: rotate(315deg);
+        }
+
+        #loader .dot:nth-child(7n+7)::before {
+            animation: 0.8s linear 0.7s normal none infinite running load;
+            background: magenta none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+8) {
+            transform: rotate(360deg);
+        }
+
+        #loader .dot:nth-child(7n+8)::before {
+            animation: 0.8s linear 0.8s normal none infinite running load;
+            background: #ff0095 none repeat scroll 0 0;
+        }
+
+        #loader .loading {
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            bottom: -40px;
+            height: 20px;
+            left: 0;
+            position: absolute;
+            right: 0;
+            width: 180px;
+        }
+
+        @keyframes load {
+            100% {
+                opacity: 0;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes load {
+            100% {
+                opacity: 0;
+                transform: scale(1);
+            }
+        }
+
+        #prof {
+            margin: 5px;
+            float: right;
+            padding-top: 15px;
+        }
+
+        #prof a {
+            color: #e19387;
+            font-size: 20px;
+
+        }
+
+        #prof a:hover {
+            text-decoration: none;
+            color: #e19387;
+        }
+
+        .popup {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* The actual popup */
+        .popup .popuptext {
+            visibility: hidden;
+            width: 120px;
+            height: 70px;
+            background-color: #e19387;
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            top: 150%;
+            left: 50%;
+            margin-left: -60px;
+        }
+
+        /* Popup arrow */
+        .popup .popuptext::after {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent #e19387 transparent;
+        }
+
+        /* Toggle this class - hide and show the popup */
+        .popup .show {
+            visibility: visible;
+            -webkit-animation: fadeIn 1s;
+            animation: fadeIn 1s;
+        }
+
+        /* Add animation (fade in the popup) */
+        @-webkit-keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        #myPopup a {
+            color: white;
+            font-size: 15px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: regular;
+            font-weight: regular;
+            float: left;
+            margin-left: 10px;
+            margin-top: 5px;
+
+        }
+
+        #myPopup a:hover {
+            color: white;
+
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        #remEdit {
+            background-color: white;
+            color: #e19387;
+            border: none;
+            outline: none;
+            height: 30px;
+            width: 80px;
+            font-size: 20px;
+            margin-bottom: 10px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: bold;
+            font-weight: bold;
+            position: relative;
+            border-radius: 5px;
+
+        }
+
+        #remEdit:focus {
+            /* background-color: #fdf0ee; */
+            color: #fdf0ee;
+            outline: none;
+        }
+
+        input[type='submit'] {
+            background-color: #e19387;
+            color: white;
+            border: none;
+            outline: none;
+            height: 30px;
+            width: 80px;
+            font-size: 20px;
+            margin-bottom: 10px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: regular;
+            font-weight: regular;
+            position: relative;
+            border-radius: 5px;
+
+        }
+
+        input[type='submit']:focus {
+            background-color: #fdf0ee;
+        }
+
+        .tableBodyScroll tbody {
+            /* display: block; */
+            max-height: 500px;
+            overflow-y: scroll;
+
+        }
+
+        .tableBodyScroll thead,
+        tbody tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+
+        }
+
+        .tableBodyScroll::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        .tableBodyScroll {
+            -ms-overflow-style: none;
+        }
+
+        #frm {
+            margin-left: 10px;
+        }
+        #addsalon {
+            background-color: white;
+            margin-right: 8px;
+            margin-top: 18px;
+            margin-left: 90px;
+            border-width: 1px;
+            outline: none;
+            border-color: #e19387;
+            border-radius: 5px;
+            color: #e19387;
+            font-size: 18px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: bold;
+            font-weight: bold;
+            padding: 2px 15px 2px 15px;
+        }
+
+        #addsalon a {
+            font-size: 18px;
+            color: #e19387;
+        }
+
+        #addsalon a:hover {
+            text-decoration: none;
+        }
+
+        #addsalon a:focus {
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        var app = angular.module("DemoApp", []);
+        app.controller("HomeController", function ($scope, $http, $window) {
+
+            var queryString = location.search;
+            var urlParams = new URLSearchParams(location.search);
+            $scope.VID = urlParams.get('VendorID');
+            $scope.string = urlParams.get('EmailId');
+            urlParams.toString();
+            $scope.Newstring = urlParams.toString().replace("=", "");
+
+            $scope.responseDetails = [];
+            $http(
+                {
+                    method: "GET",
+                    url: " https://a1xlltmdgi.execute-api.ap-southeast-2.amazonaws.com/dev/vendors?VendorID=" + $scope.VID
+                }
+            ).then(function (response) {
+                $scope.responseDetails = response.data;
+            }
+            )
+
+            $scope.serverResponse = [];
+            $http(
+                {
+                    method: "GET",
+                    url: "https://a1xlltmdgi.execute-api.ap-southeast-2.amazonaws.com/dev/offers?VendorID=" + $scope.VID
+                }
+            ).then(function (response) {
+                $scope.serverResponse = response.data;
+                $scope.DeleteOffer = $scope.serverResponse.Offers;
+            }
+            )
+
+            $scope.IsDisplay = false;
+
+            $scope.addOffer = function () {
+                document.getElementById("frm").style.opacity = 0.5;
+                $scope.IsDisplay = true;
+
+            }
+            $scope.myFunction = function () {
+                var popup = document.getElementById("myPopup");
+                popup.classList.toggle("show");
+            }
+
+
+
+            $scope.postdata = function (OfferID) {
+                if (confirm("Do you want to Delete This Offer?")) {
+                    var config = 'contenttype';
+
+                    $http.delete("https://a1xlltmdgi.execute-api.ap-southeast-2.amazonaws.com/dev/offers/" + OfferID).then(function (response) {
+                        location.reload();
+                    }, function (response) {
+
+                    });
+
+                    document.getElementById("frm").style.opacity = 0.5;
+                    $scope.IsDisplay = true;
+
+                }
+                else {
+                    location.reload();
+                }
+
+
+            }
+            $scope.formatDate = function (date) {
+                return new Date(date)
+            }
+        })
+    </script>
+</head>
+
+<body ng-app="DemoApp" ng-controller="HomeController">
+    <div id="frm">
+        <div class="row" id="head">
+            <div class="col-sm-9">
+                <h2 id="heading"><img src="Images/esradark.png" height="30" width="120"></h2>
+            </div>
+            <div class="col-sm-3">
+                <div id="top">
+                    <div class="btn-group" id="prof">
+                        <img class="img-circle" alt="user profile" width="35" height="35"
+                            ng-show="responseDetails.Vendors.ProfilePic"
+                            ng-src="{{responseDetails.Vendors.ProfilePic}}" />
+                        <img class="img-circle" alt="user profile" width="35" height="35"
+                            ng-show="!responseDetails.Vendors.ProfilePic" src="Images/avatar2.png" />
+
+                        <!-- <img src="Images/avatar2.png" class="img-circle" alt="user profile" width="35" height="35"> -->
+                        <div class="popup" ng-click="myFunction()"><a href="">
+                                <img src="Images/profile/arrow.png" width="14" height="9" style="margin-top: 5px;"></a>
+                            <span class="popuptext" id="myPopup">
+                                <li> <a ng-click=vendDeatils()
+                                        href="editProfile.html?VendorID={{responseDetails.Vendors.VendorID}}&EmailId={{string}}"><i
+                                            class="fa fa-user-o" style="margin-right: 10px;"></i>Profile</a></li>
+                                <br>
+                                <li><a ng-click=vendDeatils() href="login.html"><i class="fa fa-power-off"
+                                            style="margin-right: 10px;"></i>Logout</a></li>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-10">
+            <div id="salonD" class="row">
+                <span style="float: left;width: 130px; height:120px; margin-top: 5px;">
+                    <img ng-src="{{responseDetails.Vendors.LogoURL}}" class="img-rounded" height="120" width="120">
+                </span>
+                <span style="width: 700px;">
+                    <a href="">{{responseDetails.Vendors.VendorName}}</a>
+                    <p>4.0&nbsp;<i class="fa fa-star" style="color:orange"></i><i class="fa fa-star"
+                            style="color:orange"></i><i class="fa fa-star" style="color:orange"></i><i
+                            class="fa fa-star" style="color:orange"></i> (60)</p>
+                    <p><i class="fa fa-map-marker" aria-hidden="true"></i>
+                        {{responseDetails.Vendors.Address}}</p>
+                    <p>
+                        <li style="display: inline;" ng-repeat="atom in responseDetails.Vendors.Categories">
+                            {{atom}}{{$last ? '' : ', '}}
+                        </li>
+                    </p>
+                </span>
+            </div>
+            <div id="des" style="width:700px;">
+                <p>{{responseDetails.Vendors.VendorDescription}}</p>
+                <p><span style="margin-left: 125px;"><span ng-repeat="image in responseDetails.Vendors.Images">
+                            <img id="imgEffects" ng-src="{{image}}" width="60" height="60" class="img-rounded"
+                                style="padding: 0 4px 4px 4px; border-radius: 10px;">
+                        </span></span>
+                </p>
+            </div>
+        </div>
+        <div class="col-xs-2">
+            <div>
+                <button id="adds" ng-click=addOffer()><a
+                        href="editSalonScreen.html?VendorID={{responseDetails.Vendors.VendorID}}&EmailId={{string}}">
+                        Edit Profile</a></button>
+            </div>
+            <div>
+                <!-- <img src="Images/cale.png" height="35" width="40" style="margin-top: 11px;"> -->
+                <button id="adds" ng-click=addOffer()><a
+                        href="calendar.html?VendorID={{responseDetails.Vendors.VendorID}}&EmailId={{string}}">
+                        My Calendar</a></button>
+            </div>
+        </div>
+
+        <div class="row" id="head">
+            <nav class="navbar navbar-light">
+                <div>
+                    <h3 id="offhead">Offer Details</h3>
+                </div>
+            </nav>
+        </div>
+
+        <table width="98%" class="tableBodyScroll" style=" border-radius: 10px;">
+            <thead>
+                <th>Offer title</th>
+                <th>Description</th>
+                <th>From & To Date</th>
+                <th>From & To Time</th>
+                <th>Service Duration (mins)</th>
+                <th>Actual price</th>
+                <th>Offer price</th>
+                <th>Qty</th>
+                <th>Edit & Remove</th>
+            </thead>
+            <tbody align="center" class="example">
+                <tr ng-repeat="item in serverResponse.Offers" style="border-bottom: 2px solid #fdf0ee;">
+                    <td>{{item.OfferTitle}}</td>
+                    <td>{{item.Description}}</td>
+                    <td>{{formatDate(item.FromDateTime) | date:"MMM d, y"}}<br>To<br>{{formatDate(item.ToDateTime)  | date : "MMM d, y"}}
+                    </td>
+                    <td>{{item.FromTime}}<br>To<br>{{item.ToTime}}</td>
+                    <td>{{item.ServiceDuration}}</td>
+                    <td>{{item.ActualPrice | number:2}}&#36;</td>
+                    <td>{{item.OfferPrice | number:2}}&#36;</td>
+                    <td>{{item.Qty}}</td>
+                    <td>
+                        <a id="remEdit"
+                            href="edituserOffer.html?VendorID={{responseDetails.Vendors.VendorID}}&offerId={{item.OfferID}}&EmailId={{string}}"
+                            ng-click="addOffer()" style="font-size: 20px;"><i class="fa fa-pencil"></i></a>
+                        &nbsp;
+                        <a id="remEdit" href="" ng-click="postdata(item.OfferID);addOffer()" style="font-size: 20px;"><i
+                                class="fa fa-trash"></i></a>
+                        <!-- <input id="btntest" type="submit" value="Delete" ng-click="postdata(item.OfferID);addOffer()"> -->
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+    <div class="container" ng-show="IsDisplay">
+        <div class="row">
+            <div id="loader">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="loading"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

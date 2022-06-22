@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add Offers</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.1001fonts.com/aspergit-font.html">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://code.angularjs.org/1.7.8/angular.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+    </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+
+
+    <style>
+        body {
+            background-color: #fdf0ee;
+            height: 900px;
+        }
+
+        #heading {
+            font-size: 35px;
+            color: #e19387;
+            /* font-family: Proxima Nova Alt; */
+            font-style: bold;
+            font-weight: bold;
+            margin-left: 20px;
+            margin-top: 12px;
+            margin-right: 1100px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        #head {
+            height: 73px;
+            width: 100%;
+        }
+
+        #offhead {
+            font-size: 25px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: bold;
+            font-weight: bold;
+            margin-left: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+
+        input[type='submit'] {
+            background-color: #e19387;
+            color: white;
+            border: none;
+            outline: none;
+            height: 37px;
+            width: 130px;
+            font-size: 20px;
+            margin-bottom: 10px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: regular;
+            font-weight: regular;
+            position: relative;
+            border-radius: 5px;
+            margin-top: 30px;
+            margin-right: 35px;
+
+        }
+
+        input[type='submit']:focus {
+            background-color: #e19387;
+        }
+
+        input[type='button'] {
+            background-color: white;
+            color: #e19387;
+            border: none;
+            outline: none;
+            height: 37px;
+            width: 130px;
+            font-size: 20px;
+            margin-bottom: 10px;
+            border: 1px solid #e19387;
+            /* font-family: Proxima Nova Alt; */
+            font-style: regular;
+            font-weight: regular;
+            position: relative;
+            border-radius: 5px;
+            margin-top: 30px;
+            margin-right: 5px;
+        }
+
+        input[type='button']:focus {
+            background-color: #fdf0ee;
+        }
+
+        #msg {
+            color: red;
+        }
+
+        #loader {
+            bottom: 0;
+            height: 100px;
+            left: 0;
+            margin: auto;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100px;
+        }
+
+        #loader .dot {
+            bottom: 0;
+            height: 100%;
+            left: 0;
+            margin: auto;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 50px;
+        }
+
+        #loader .dot::before {
+            border-radius: 75%;
+            content: "";
+            height: 50px;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transform: scale(0);
+            width: 50px;
+        }
+
+        #loader .dot:nth-child(7n+1) {
+            transform: rotate(45deg);
+        }
+
+        #loader .dot:nth-child(7n+1)::before {
+            animation: 0.8s linear 0.1s normal none infinite running load;
+            background: #00ff80 none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+2) {
+            transform: rotate(90deg);
+        }
+
+        #loader .dot:nth-child(7n+2)::before {
+            animation: 0.8s linear 0.2s normal none infinite running load;
+            background: #00ffea none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+3) {
+            transform: rotate(135deg);
+        }
+
+        #loader .dot:nth-child(7n+3)::before {
+            animation: 0.8s linear 0.3s normal none infinite running load;
+            background: #00aaff none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+4) {
+            transform: rotate(180deg);
+        }
+
+        #loader .dot:nth-child(7n+4)::before {
+            animation: 0.8s linear 0.4s normal none infinite running load;
+            background: #0040ff none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+5) {
+            transform: rotate(225deg);
+        }
+
+        #loader .dot:nth-child(7n+5)::before {
+            animation: 0.8s linear 0.5s normal none infinite running load;
+            background: #2a00ff none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+6) {
+            transform: rotate(270deg);
+        }
+
+        #loader .dot:nth-child(7n+6)::before {
+            animation: 0.8s linear 0.6s normal none infinite running load;
+            background: #9500ff none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+7) {
+            transform: rotate(315deg);
+        }
+
+        #loader .dot:nth-child(7n+7)::before {
+            animation: 0.8s linear 0.7s normal none infinite running load;
+            background: magenta none repeat scroll 0 0;
+        }
+
+        #loader .dot:nth-child(7n+8) {
+            transform: rotate(360deg);
+        }
+
+        #loader .dot:nth-child(7n+8)::before {
+            animation: 0.8s linear 0.8s normal none infinite running load;
+            background: #ff0095 none repeat scroll 0 0;
+        }
+
+        #loader .loading {
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            bottom: -40px;
+            height: 20px;
+            left: 0;
+            position: absolute;
+            right: 0;
+            width: 180px;
+        }
+
+        @keyframes load {
+            100% {
+                opacity: 0;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes load {
+            100% {
+                opacity: 0;
+                transform: scale(1);
+            }
+        }
+
+        #prof {
+            margin: 10px 0 5px 5px;
+            padding-top: 10px;
+            float: right;
+        }
+
+        #prof a {
+            color: #e19387;
+            font-size: 20px;
+
+        }
+
+        #prof a:hover {
+            text-decoration: none;
+            color: #e19387;
+        }
+
+        .popup {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* The actual popup */
+        .popup .popuptext {
+            visibility: hidden;
+            width: 120px;
+            height: 70px;
+            background-color: #e19387;
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            top: 150%;
+            left: 50%;
+            margin-left: -60px;
+        }
+
+        /* Popup arrow */
+        .popup .popuptext::after {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent #e19387 transparent;
+        }
+
+        /* Toggle this class - hide and show the popup */
+        .popup .show {
+            visibility: visible;
+            -webkit-animation: fadeIn 1s;
+            animation: fadeIn 1s;
+        }
+
+        /* Add animation (fade in the popup) */
+        @-webkit-keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        #myPopup a {
+            color: white;
+            font-size: 15px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: regular;
+            font-weight: regular;
+            float: left;
+            margin-left: 10px;
+            margin-top: 5px;
+
+        }
+
+        #myPopup a:hover {
+            color: white;
+
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        .right {
+            background-color: white;
+            float: right;
+            width: 600px;
+            height: 100%;
+            margin-left: 15px;
+            padding: 20px;
+            border-radius: 15px;
+            /* border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px; */
+            border-right: none;
+
+        }
+
+        .left {
+            width: 50%;
+            margin-top: 60px;
+            margin-left: 60px;
+        }
+
+        input {
+            height: 30px;
+            font-size: 18px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: normal;
+            font-weight: normal;
+
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        textarea {
+            font-size: 18px;
+            width: 325px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: normal;
+            font-weight: normal;
+            border-radius: 5px;
+        }
+
+        textarea:focus {
+            outline: none;
+        }
+
+        label {
+            margin: 0 0 3px;
+            font-size: 20px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: normal;
+            font-weight: normal;
+            color: #212529;
+            margin-top: 17px;
+        }
+
+        #msg {
+            color: red;
+            /* font-family: Proxima Nova Alt; */
+            font-style: regular;
+            font-weight: regular;
+            font-size: 18px;
+        }
+
+        #adds {
+            background-color: #fdf0ee;
+            margin-right: 25px;
+            border-width: 1px;
+            outline: none;
+            border-color: #e19387;
+            border-radius: 5px;
+            color: #e19387;
+            font-size: 18px;
+            /* font-family: Proxima Nova Alt; */
+            font-style: bold;
+            font-weight: bold;
+            padding: 2px 15px 2px 15px;
+            margin-left: 75px;
+            margin-top: 17px;
+
+
+        }
+
+        #adds a {
+            font-size: 18px;
+            color: #e19387;
+
+        }
+
+        #adds a:hover {
+            text-decoration: none;
+        }
+
+        #adds a:focus {
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        // $(function () {
+
+
+        //     $("#datetimepicker1").datetimepicker(
+        //         {
+
+        //             minDate: moment()
+
+
+        //         }
+        //     );
+        // });
+    </script>
+    <script>
+        var app = angular.module("DemoApp", []);
+
+        app.controller("HomeController", function ($scope, $http, $window) {
+
+            // $(document).ready(function () {
+            //     elem = document.getElementById("todate")
+            //     var iso = new Date().toISOString();
+
+
+            //     var minDate = iso.substring(0, 16);
+
+
+            //     elem.value = minDate
+            //     elem.min = minDate
+            // });
+            // $(document).ready(function () {
+            //     elem = document.getElementById("fdate")
+            //     var iso = new Date().toISOString();
+
+            //     var minDate = iso.substring(0, 16);
+
+            //     elem.value = minDate
+            //     elem.min = minDate
+            // });
+
+
+            $(document).ready(function () {
+
+                $("#datetimepicker1").datetimepicker({
+
+                    minDate: moment().clone().subtract(1, 'days'),
+                    format: 'YYYY-MM-DD',
+                    useCurrent: false,
+                    sideBySide: true,
+                    
+
+                });
+                $('#datetimepicker1').datetimepicker().on('dp.change', function (e) {
+                    var incrementDay = moment(new Date(e.date));
+                    incrementDay.add(0, 'days');
+                    $('#datetimepicker2').data('DateTimePicker').minDate(incrementDay);
+                });
+
+            });
+
+            $(document).ready(function () {
+
+                $("#datetimepicker2").datetimepicker({
+
+                    minDate: moment().clone().subtract(1, 'days'),
+                    format: 'YYYY-MM-DD',
+                    useCurrent: false,
+                    sideBySide: true,
+
+
+                });
+                $('#datetimepicker2').datetimepicker().on('dp.change', function (e) {
+                    var decrementDay = moment(new Date(e.date));
+                    decrementDay.subtract(0, 'days');
+                    $('#datetimepicker1').data('DateTimePicker').maxDate(decrementDay);
+                    // $(this).data("DateTimePicker").hide();
+                });
+
+
+            });
+
+
+
+
+            $(function () {
+                $('#timepicker1').datetimepicker({
+                    format: 'HH:mm',
+                });
+                $('#timepicker2').datetimepicker({
+                    format: 'HH:mm',
+                });
+            });
+
+
+
+
+            var queryString = location.search;
+            var urlParams = new URLSearchParams(location.search);
+            $scope.vendorID = urlParams.get('VendorID');
+            $scope.UserId = urlParams.get('EmailId');
+            urlParams.toString();
+            $scope.Newstring = urlParams.toString().replace("=", "");
+
+            $scope.homepage = function () {
+                location.href = "homescreen.html?VendorID=" + $scope.vendorID + "&" + "EmailId=" + $scope.UserId;
+            }
+            $scope.lott = [];
+            $http(
+                {
+                    method: "GET",
+                    url: " https://a1xlltmdgi.execute-api.ap-southeast-2.amazonaws.com/dev/adminusers?EmailID=" + $scope.UserId
+                }
+            ).then(function (response) {
+                $scope.lott = response.data;
+            }
+            )
+
+            $scope.serverResponse = [];
+            $http(
+                {
+                    method: "GET",
+                    url: "https://a1xlltmdgi.execute-api.ap-southeast-2.amazonaws.com/dev/categories"
+                }
+            ).then(function (response) {
+                $scope.serverResponse = response.data;
+            }
+            )
+
+            $scope.responseDetails = [];
+            $http(
+                {
+                    method: "GET",
+                    url: " https://a1xlltmdgi.execute-api.ap-southeast-2.amazonaws.com/dev/vendors?VendorID=" + $scope.vendorID
+                }
+            ).then(function (response) {
+                $scope.responseDetails = response.data;
+            }
+            )
+
+            $scope.Title = document.getElementById("title").value;
+            $scope.Aprice = document.getElementById("aprice").value;
+            $scope.Ofprice = document.getElementById("ofprice").value;
+            $scope.description = document.getElementById("des").value;
+            $scope.Quantity = document.getElementById("qty").value;
+            $scope.Service = document.getElementById("service").value;
+
+
+            // var myDate = window.document.getElementById("datetimepicker1").value;
+            // $scope.Todate = myDate;
+            // $scope.Todate = $scope.p;
+
+            // $scope.Todate=;
+            $scope.lblMsg = null;
+            $scope.IsDisplay = false;
+            $scope.postdata = function () {
+
+
+                $scope.Otime = document.getElementById("timepicker1").value;
+                $scope.Ctime = document.getElementById("timepicker2").value;
+
+                $scope.FDate = document.getElementById("datetimepicker1").value;
+                $scope.Todate = document.getElementById("datetimepicker2").value;
+
+                $scope.Aprice = parseFloat(document.getElementById("aprice").value);
+                $scope.Ofprice = parseFloat(document.getElementById("ofprice").value);
+
+                $scope.Discount = (100 - ($scope.Ofprice / $scope.Aprice) * 100).toFixed(2);
+                // $scope.p = document.getElementById("datetimepicker1").value;
+                // $scope.t = ($scope.FDate).slice(11, 16);
+                // $scope.i = ($scope.Todate).slice(11, 16);
+                // if ($scope.t == '00:00' || $scope.i == '00:00') {
+                //     alert("Please Enter Time");
+                //     // location.reload();
+                // }
+                // else {
+
+                if ($scope.Otime != "" && $scope.Ctime != "" && $scope.Title != "" && $scope.Aprice != "" && $scope.Ofprice != "" && $scope.description != "" && $scope.Quantity
+                    != "" && $scope.FDate != "" && $scope.Todate != "" && $scope.Discount != "" && $scope.Service != "") {
+                    if ($scope.Aprice >= $scope.Ofprice) {
+
+                        var data = {
+                            VendorID: $scope.vendorID,
+
+                            OfferTitle: $scope.Title,
+                            Description: $scope.description,
+                            ServiceDuration: $scope.Service,
+                            ActualPrice: $scope.Aprice,
+                            OfferPrice: $scope.Ofprice,
+                            Qty: $scope.Quantity,
+                            OfferPercentage: $scope.Discount,
+                            FromDateTime: $scope.FDate,
+                            ToDateTime: $scope.Todate,
+                            FromTime: $scope.Otime,
+                            ToTime: $scope.Ctime
+
+
+                        };
+                        document.getElementById("frm").style.opacity = 0.5;
+                        $scope.IsDisplay = true;
+                        //Call the services
+                        var config = 'contenttype';
+                        $http.post('https://a1xlltmdgi.execute-api.ap-southeast-2.amazonaws.com/dev/offers', JSON.stringify(data))
+                            .then(function (response) {
+                                if (response.data)
+                                    $scope.msg = "Post Data Submitted Successfully!";
+                                $scope.next = response.data.Status;
+
+
+
+                                if ($scope.next == 1) {
+                                    $window.location.href = "homescreen.html?" + "VendorID=" + $scope.vendorID + "&" + "EmailId=" + $scope.UserId;
+                                }
+
+                            },
+                                function (response) {
+                                    $scope.msg = "Service not Exists";
+                                    $scope.statusval = response.status;
+                                    $scope.statustext = response.statusText;
+                                    $scope.headers = response.headers();
+                                });
+
+                    }
+                    else {
+                        $window.alert("Actual Price must be greater than Offer Price");
+                        // location.reload();
+
+                    }
+
+
+                }
+                else {
+                    // document.getElementById("msg").innerText = "Please fill all mandatory fields.";
+                    alert("Please fill all mandatory fields.");
+                    // location.reload();
+                }
+
+
+                // }
+
+
+
+
+            };
+            // $scope.IsDisplay = false;
+            // $scope.vendDeatils = function () {
+            //     document.getElementById("frm").style.opacity = 0.5;
+            //     $scope.IsDisplay = true;
+            // }
+            $scope.myFunction = function () {
+                var popup = document.getElementById("myPopup");
+                popup.classList.toggle("show");
+            }
+
+
+            $scope.dis = function () {
+                $scope.Aprice = document.getElementById("aprice").value;
+                $scope.Ofprice = document.getElementById("ofprice").value;
+                $scope.Discount = (100 - ($scope.Ofprice / $scope.Aprice) * 100).toFixed(2);
+            }
+
+            // var today = new Date().toISOString();
+            // $scope.abc = today;
+            // console.log(today);
+            // $scope.fetchButtonValue = function () {
+            //     $scope.p = document.getElementById("datetimepicker2").value;
+            //     $scope.t = ($scope.p).slice(11, 16);
+            //   alert($scope.t)
+
+
+
+
+
+
+            // }
+
+
+        })
+    </script>
+</head>
+
+<body ng-app="DemoApp" ng-controller="HomeController">
+    <div id="frm">
+        <div class="row" id="head">
+            <div class="col-xs-7">
+                <h2 id="heading"><img src="Images/esradark.png" height="30" width="120" ng-click="homepage()"></h2>
+            </div>
+            <div class="col-xs-5">
+                <div id="top" style="float: right;">
+                    <!-- <button id="adds" ng-click=vendDeatils()><a href="addSalonsScreen.html?EmailId={{UserId}}">
+                            Add
+                            Salon</a></button> -->
+                    <div class="btn-group" id="prof">
+
+                        <img class="img-circle" alt="user profile" width="35" height="35"
+                            ng-show="lott.AdminUserDetails.ProfilePic" ng-src="{{lott.AdminUserDetails.ProfilePic}}" />
+                        <img class="img-circle" alt="user profile" width="35" height="35"
+                            ng-show="!lott.AdminUserDetails.ProfilePic" src="Images/avatar2.png" />
+
+                        <!-- <img src="Images/avatar2.png" class="img-circle" alt="user profile" width="35" height="35"> -->
+                        <div class="popup" ng-click="myFunction()"><a href="">
+                                <img src="Images/profile/arrow.png" width="14" height="9" style="margin-top: 5px;"></a>
+                            <span class="popuptext" id="myPopup">
+                                <li> <a ng-click=vendDeatils() href="editadminProfile.html?VendorID={{vendorID}}&EmailId={{UserId}}"><i
+                                            class="fa fa-user-o" style="margin-right: 10px;"></i>Profile</a></li>
+                                <br>
+                                <li><a ng-click=vendDeatils() href="login.html"><i class="fa fa-power-off"
+                                            style="margin-right: 10px;"></i>Logout</a></li>
+
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <span class="col-sm-3">
+                <!-- <div class="left">
+                    <img src="Images/offers.png" width="500" height="500">
+                </div> -->
+            </span>
+            <span class="col-sm-6"
+                style="background-color: #fdf0ee; border-radius: 15px; border-right: none;margin-bottom: 60px;">
+                <div class="right">
+                    <h2 id="offhead">Add Offer</h2>
+                    <form name="frmHome">
+                        <div>
+                            <label>Offer Title:</label><br>
+                            <textarea id="title" ng-model="Title" style="width: 300px;" required></textarea>
+                        </div>
+                        <div>
+                            <label style="margin-top: 10px;">Description</label><br>
+                            <textarea rows="3" style="width: 300px;" id="des" ng-model="description"
+                                required></textarea>
+                        </div>
+                        <div>
+                            <label style="margin-top: 10px;">Actual Price:</label><br>
+                            <input type="number" id="aprice" ng-model="Aprice" size="20"
+                                ng-value="serverResponse.Offers.ServiceDuration" min="0"
+                                title="Actual Price is greater than Offer Price" required />
+                            <!-- <input type="number" id="aprice" ng-model="Aprice" size="20" oninput="this.value = 
+                            !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"
+                                ng-value="serverResponse.Offers.ServiceDuration" 
+                                title="Actual Price is greater than Offer Price" required /> -->
+                        </div>
+                        <div>
+                            <label>Offer Price:</label><br>
+                            <input type="number" id="ofprice" ng-model="Ofprice" size="20" min="0"
+                                ng-value="serverResponse.Offers.ServiceDuration" required 
+                                title="Offer Price must be less than Actual Price" />
+                        </div>
+                        <div>
+                            <label>Offer Percentage:</label><br>
+                            <input type="text" id="per" ng-model="Percentage"
+                                ng-value="(100 - (Ofprice / Aprice) * 100).toFixed(2)" readonly />
+                        </div>
+                        <div>
+                            <label>Qty:</label><br>
+                            <input type="number" id="qty" min="1" ng-model="Quantity" oninput="this.value = 
+                            !!this.value && Math.abs(this.value) >= 1 ? Math.abs(this.value) : null" required />
+                        </div>
+                        <div>
+                            <label>Service Duration (mins) </label><br>
+                            <input type="number" id="service" min="1" ng-model="Service" oninput="this.value = 
+                            !!this.value && Math.abs(this.value) >= 1 ? Math.abs(this.value) : null" required />
+                        </div>
+
+                        <div>
+                            <label>Offer Valid From</label>
+                            <div class="form-group">
+                                <div class="input-group date" style="width: 200px;">
+                                    <input type='text' id="datetimepicker1" ng-model="Fdate" size="20"
+                                        placeholder="mm/dd/yyyy" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label style="margin-top: 5px;">Offer Valid Till</label>
+                            <div class="form-group">
+                                <div class="input-group date" style="width: 200px;">
+                                    <input type='text' id="datetimepicker2" ng-model="Todate" size="20"
+                                        placeholder="mm/dd/yyyy" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top: -10px;">
+                            <label for="qty">
+                                <span>From Time</span>
+                                <div class='input-group date'>
+                                    <input type="text" id='timepicker1' size="10" placeholder="--:-- --"
+                                        ng-model="Otime" required>
+                                </div>
+                            </label>&nbsp;&nbsp;
+                            <label for="from">
+                                <span>To Time</span>
+                                <div class='input-group date'>
+                                    <input type="text" id="timepicker2" size="10" placeholder="--:-- --"
+                                        ng-model="Ctime" required>
+                                </div>
+                            </label>
+                        </div>
+                        <a href=""><input id="log" type="submit" value="Submit" ng-click="postdata()"></a>
+                        <a href="homescreen.html?VendorID={{vendorID}}&EmailId={{UserId}}"><input type="button" value="Cancel"></a>
+                        <span id="msg"></span>
+                    </form>
+
+                </div>
+            </span>
+            <span class="col-sm-3"></span>
+        </div>
+
+
+
+    </div>
+
+    <div class="container" ng-show="IsDisplay">
+        <div class="row">
+            <div id="loader">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="loading"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
